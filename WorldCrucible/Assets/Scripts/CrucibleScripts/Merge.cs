@@ -11,16 +11,7 @@ public class Merge : MonoBehaviour
     Transform Block2;
     public float Distance; // The conditional distance until elements start moving towards 
     public float MergeSpeed; // how fast the elements will move together
-
-
-    public float MergeThreshold = 0.5f;   // Distance at which merging occurs
-    public float AttractionConstant = 1f; // Strength of attraction (like gravity)
-    public float MaxAcceleration = 10f;   // To prevent excessive speeds
-
     Rigidbody2D rb;
-
-    float mass;
-
 
     bool CanMerge;  // Determines if the elements can merge
     void Start() {

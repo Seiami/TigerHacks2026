@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: CH3OH
   molarMass: 32
   color: {r: 0.6320754, g: 0.39868456, b: 0.32498217, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 4608524388882744290, guid: 54d13b4eaf047da488350edef2656329, type: 3}

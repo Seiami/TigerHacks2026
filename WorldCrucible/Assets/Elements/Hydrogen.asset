@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: H
   molarMass: 1
   color: {r: 0.8396226, g: 0.44400236, b: 0.22970808, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 8298622250421565530, guid: 72a0ab7d6e9b32548873f581737215d4, type: 3}

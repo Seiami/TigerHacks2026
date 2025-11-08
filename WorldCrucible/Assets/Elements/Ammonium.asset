@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: NH4
   molarMass: 18
   color: {r: 0.6922368, g: 0.8901961, b: 0.3411765, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -5877738103630867997, guid: fd5270d7d9ce4d448a903efee0f07146, type: 3}

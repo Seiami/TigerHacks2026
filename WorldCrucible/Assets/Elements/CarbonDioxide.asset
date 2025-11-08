@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: CO2
   molarMass: 44
   color: {r: 0.37824848, g: 0.7542587, b: 0.8018868, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -3162197993155181820, guid: 5a0a21564d5df1346ba07f1b5c75bbde, type: 3}

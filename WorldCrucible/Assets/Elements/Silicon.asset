@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: Si
   molarMass: 28
   color: {r: 0.5169989, g: 0.58131284, b: 0.740566, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -4774313372091801431, guid: 3c7096c2ab00a5c43acf0adae6856cfb, type: 3}

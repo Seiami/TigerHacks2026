@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: N
   molarMass: 14
   color: {r: 0.79724306, g: 0.4509804, b: 0.9372549, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -7597288178442422562, guid: 2a26d7bf9f8afa14ca0b6485dddfbb46, type: 3}

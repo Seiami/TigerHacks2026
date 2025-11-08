@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< Updated upstream
   - CelestialBodies
+=======
+  - MergeBlock
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

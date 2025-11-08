@@ -26,7 +26,7 @@ public class OrbitDebugDisplay : MonoBehaviour {
     }
 
     void DrawOrbits () {
-        CelestialBody[] bodies = FindObjectsOfType<CelestialBody> ();
+        CelestialBody[] bodies = FindObjectsByType<CelestialBody>(FindObjectsSortMode.None);
         var virtualBodies = new VirtualBody[bodies.Length];
         var drawPoints = new Vector3[bodies.Length][];
         int referenceFrameIndex = 0;
@@ -68,7 +68,7 @@ public class OrbitDebugDisplay : MonoBehaviour {
 
         // Draw paths
         for (int bodyIndex = 0; bodyIndex < virtualBodies.Length; bodyIndex++) {
-            var pathColour = bodies[bodyIndex].gameObject.GetComponentInChildren<MeshRenderer> ().sharedMaterial.color; //
+            var pathColour = bodies[bodyIndex].gameObject.GetComponentInChildren<MeshRenderer>().sharedMaterial.color; //
 
             if (useThickLines) {
                 var lineRenderer = bodies[bodyIndex].gameObject.GetComponentInChildren<LineRenderer> ();
@@ -107,7 +107,7 @@ public class OrbitDebugDisplay : MonoBehaviour {
     }
 
     void HideOrbits () {
-        CelestialBody[] bodies = FindObjectsOfType<CelestialBody> ();
+        CelestialBody[] bodies = FindObjectsByType<CelestialBody>(FindObjectsSortMode.None);
 
         // Draw paths
         for (int bodyIndex = 0; bodyIndex < bodies.Length; bodyIndex++) {
@@ -129,7 +129,7 @@ public class OrbitDebugDisplay : MonoBehaviour {
 
         public VirtualBody (CelestialBody body) {
             position = body.transform.position;
-            velocity = body.initialVelocity;
+            velocity = body.velocity;
             mass = body.mass;
         }
     }

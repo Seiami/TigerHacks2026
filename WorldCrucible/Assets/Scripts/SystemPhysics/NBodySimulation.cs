@@ -4,20 +4,24 @@ using UnityEditor;
 using UnityEngine;
 
 // Tutorial: https://www.youtube.com/watch?v=7axImc1sxa0&t=268s
+// Tutorial: https://www.youtube.com/watch?v=kUXskc76ud8&t=162s
+
 public class NBodySimulation : MonoBehaviour
 {
     CelestialBody[] bodies;
     static NBodySimulation instance;
 
+
     void Awake()
     {
         bodies = FindObjectsByType<CelestialBody>(FindObjectsSortMode.None);
+
         Time.fixedDeltaTime = Universe.physicsTimeStep;
-        Debug.Log ("Setting fixedDeltaTime to: " + Universe.physicsTimeStep);
     }
 
     void FixedUpdate()
     {
+        /*
         for (int i = 0; i < bodies.Length; i++)
         {
             Vector2 acceleration = CalculateAcceleration(bodies[i].Position, bodies[i]);
@@ -27,6 +31,7 @@ public class NBodySimulation : MonoBehaviour
         {
             bodies[i].UpdatePosition(Universe.physicsTimeStep);
         }
+        */
     }
 
     public static Vector2 CalculateAcceleration(Vector2 point, CelestialBody ignorebody = null)
@@ -43,6 +48,9 @@ public class NBodySimulation : MonoBehaviour
         }
         return acceleration;
     }
+
+    
+
 
     public static CelestialBody[] Bodies
     {

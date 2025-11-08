@@ -6,6 +6,6 @@ using UnityEngine;
 
 public static class Universe
 {
-    public const float gravitationalConstant = 100f; //0.0001f
-    public const float physicsTimeStep = 0.01f; //0.01f
+    public const float gravitationalConstant = 1000f; //0.0001f
+    public const float physicsTimeStep = 0.1f; //0.01f
 }

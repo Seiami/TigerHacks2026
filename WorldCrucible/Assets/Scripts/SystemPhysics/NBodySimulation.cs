@@ -43,7 +43,7 @@ public class NBodySimulation : MonoBehaviour
             {
                 float sqrDst = (body.Position - point).sqrMagnitude;
                 Vector2 forceDir = (body.Position - point).normalized;
-                acceleration += forceDir * Universe.gravitationalConstant * body.mass / sqrDst;
+                acceleration += forceDir * Universe.gravitationalConstant * body.GetComponent<Rigidbody2D>().mass / sqrDst;
             }
         }
         return acceleration;

@@ -130,7 +130,7 @@ public class OrbitDebugDisplay : MonoBehaviour {
         public VirtualBody (CelestialBody body) {
             position = body.transform.position;
             velocity = body.velocity;
-            mass = body.mass;
+            mass = body.GetComponent<Rigidbody2D>().mass;
         }
     }
 }

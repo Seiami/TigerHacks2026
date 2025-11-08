@@ -8,21 +8,18 @@ using System.Collections.Generic;
 [RequireComponent (typeof (Rigidbody2D))]
 public class CelestialBody : GravityObject
 {
-    public float radius;
-    public float surfaceGravity;
-    //public Vector2 initialVelocity;
+    public Vector2 initialVelocity;
+    public bool useInitialVelocity = false;
     //public string bodyName = "Unnamed";
     Transform meshHolder;
 
     public Vector2 velocity { get; private set; }
-    public float mass { get; private set; }
     Rigidbody2D rb;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.mass = mass;
-        //velocity = initialVelocity;
+        velocity = initialVelocity;
     }
 
     // Update all velocities of all  at once in scene
@@ -58,7 +55,7 @@ public class CelestialBody : GravityObject
     }
     */
 
-    void OnValidate()
+    /* void OnValidate()
     {
         //mass = surfaceGravity * radius * radius / Universe.gravitationalConstant;
         // TODO: Mesh holder should be a child under the body that renders/has the mesh representation. Implement later
@@ -66,6 +63,7 @@ public class CelestialBody : GravityObject
         // meshHolder = transform.GetChild(0); 
         // GameObject.name = bodyName;
     }
+    */
 
     public Rigidbody2D Rigidbody2D
     {

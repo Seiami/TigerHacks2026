@@ -30,20 +30,25 @@ public class GravityHandler : MonoBehaviour
 
     public static void AddGravityForce(Rigidbody2D attractor, Rigidbody2D target)
     {
-        float massProduct = attractor.mass*target.mass*G;
+        // Standard Newtonian gravity: F = G * (m1 * m2) / r^2
+        float massProduct = attractor.mass * target.mass; // do NOT multiply by G here
 
-        //You could also do
-        //float distance = Vector3.Distance(attractor.position,target.position.
         Vector3 difference = attractor.position - target.position;
-        float distance = difference.magnitude; // r = Mathf.Sqrt((x*x)+(y*y))
+        float distance = difference.magnitude;
 
-        //F = G * ((m1*m2)/r^2)
-        float unScaledforceMagnitude = massProduct/Mathf.Pow(distance,2);
-        float forceMagnitude = G*unScaledforceMagnitude;
+        // Prevent singularities / extremely large forces when distance ~ 0
+        const float minDistance = 0.01f;
+        float safeDistance = Mathf.Max(distance, minDistance);
+
+        float unScaledforceMagnitude = massProduct / (safeDistance * safeDistance);
+        float forceMagnitude = G * unScaledforceMagnitude;
 
         Vector3 forceDirection = difference.normalized;
+        Vector3 forceVector = forceDirection * forceMagnitude;
 
-        Vector3 forceVector = forceDirection*forceMagnitude;
+        // Defensive: ensure finite force
+        if (float.IsNaN(forceVector.x) || float.IsNaN(forceVector.y) || float.IsInfinity(forceVector.x) || float.IsInfinity(forceVector.y))
+            return;
 
         target.AddForce(forceVector);
     }

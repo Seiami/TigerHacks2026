@@ -233,7 +233,7 @@ MonoBehaviour:
   celestialBodyPrefabs:
   - {fileID: 5402017947401802408, guid: 97a12bef6326dd0479bfcf92a0dd853e, type: 3}
   - {fileID: 737578632114889192, guid: f79f69963841c13498c2a25b48e30716, type: 3}
-  spawnKeys: 0101000002010000
+  spawnKeys: 1401000013010000
 --- !u!114 &342283703
 MonoBehaviour:
   m_ObjectHideFlags: 0

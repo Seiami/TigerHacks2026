@@ -7,18 +7,16 @@ public class NewPlanet : MonoBehaviour {
     //randomized int that determines sprite
     private int rand;
     //changing values reflecting planet data
-    private bool isInPool;
-    private int mass;
-    private List<string> compElements;
-    private List<float> compPercents;
+    public int mass;
+    public List<string> compElements;
+    public List<float> compPercents;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
+        //selects random sprite to use for rest of lifetime
         rand = Random.Range(0,planetSprites.Count);
         GetComponent<SpriteRenderer>().sprite = planetSprites[rand];
     }
-    
-    // Update is called once per frame
+
     void Update(){
         if(Input.GetMouseButtonDown(0)) {
             Recolor();
@@ -30,7 +28,6 @@ public class NewPlanet : MonoBehaviour {
     }
 
     void Recolor() {
-        //GetComponent<SpriteRenderer>().color = new Color32(R, G, B, A);
-        
+        GetComponent<SpriteRenderer>().color = new Color32((byte)Random.Range(0,255), (byte)Random.Range(0,255), (byte)Random.Range(0,255), (byte)255);
     }
 }

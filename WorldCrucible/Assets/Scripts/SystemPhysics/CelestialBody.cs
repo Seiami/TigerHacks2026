@@ -21,7 +21,7 @@ public class CelestialBody : GravityObject
     private bool applyVelocityFlag = false;
     private bool enableColliderFlag = false;
     private Vector2 pendingVelocity = Vector2.zero;
-    private bool applyVelocityNextFrame = false;
+    // private bool applyVelocityNextFrame = false;
 
     void Awake()
     {

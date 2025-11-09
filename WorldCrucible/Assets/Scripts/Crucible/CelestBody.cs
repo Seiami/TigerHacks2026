@@ -21,10 +21,10 @@ public class CelestBody : MonoBehaviour
 
     // Weights for comparison algorithm
     [Header("Comparison Weights")]
-    [SerializeField] private float compositionWeight = 0.45f;
-    [SerializeField] private float temperatureWeight = 0.45f;
+    [SerializeField] private float compositionWeight = 0.5f;
+    [SerializeField] private float temperatureWeight = 0.44f;
     [SerializeField] private float massWeight = 0.05f;
-    [SerializeField] private float radiusWeight = 0.05f;
+    [SerializeField] private float radiusWeight = 0.01f;
 
     [System.Serializable]
     public struct ElementRatio
@@ -302,7 +302,7 @@ public class CelestBody : MonoBehaviour
         // Random temperature (Kelvin)
         temperature = Random.Range(1f, 5000f);
 
-        // Get all ElementData assets in project
+        // Gather ElementData assets via AssetDatabase (editor-only) and delegate to shared routine
         string[] elementGuids = AssetDatabase.FindAssets("t:ElementData");
         List<ElementData> allElements = new List<ElementData>();
         foreach (var guid in elementGuids)
@@ -313,14 +313,72 @@ public class CelestBody : MonoBehaviour
                 allElements.Add(element);
         }
 
-        if (allElements.Count == 0)
+        RandomizeInternal(allElements);
+    }
+#endif
+
+    /// <summary>
+    /// Runtime-safe randomization of this body's composition and visual appearance.
+    /// Requires ElementData assets to be placed under a Resources folder (e.g. Resources/Elements).
+    /// Call this from Play mode to randomize at runtime.
+    /// </summary>
+    /// <summary>
+    /// Runtime randomization entry point.
+    /// Randomizes composition, and also temperature and optional mass/radius tweak.
+    /// Requires ElementData assets to be placed under a Resources folder (e.g. Resources/Elements).
+    /// </summary>
+    /// <param name="minTemp">Minimum temperature in Kelvin</param>
+    /// <param name="maxTemp">Maximum temperature in Kelvin</param>
+    /// <param name="randomizeMassScale">If true, applies a small random scale to mass (and recomputes radius)</param>
+    public void RandomizeRuntime(float minTemp = 100f, float maxTemp = 5000f, bool randomizeMassScale = true)
+    {
+        // Load ElementData assets from Resources/Elements (adjust path if you store them elsewhere)
+        ElementData[] loaded = Resources.LoadAll<ElementData>("Elements");
+        List<ElementData> allElements = new List<ElementData>(loaded);
+
+        if (allElements == null || allElements.Count == 0)
         {
-            Debug.LogWarning("No ElementData assets found to randomize composition.");
+            Debug.LogWarning("RandomizeRuntime: No ElementData found in Resources/Elements. Place ElementData assets under a Resources folder.");
             return;
         }
 
-        // Decide how many distinct elements to use
-        int elementCount = Random.Range(2, Mathf.Min(7, allElements.Count + 1));
+        // Randomize temperature first
+        temperature = Random.Range(minTemp, maxTemp);
+
+        // Delegate to shared randomizer for composition & visual
+        RandomizeInternal(allElements);
+
+        // Optionally tweak mass and recompute radius as a small random multiplier
+        if (randomizeMassScale)
+        {
+            float scale = Random.Range(0.5f, 2f);
+            mass *= scale;
+            // Update radius assuming cube-root scaling
+            radius = Mathf.Pow(Mathf.Max(1e-6f, mass), 1f / 3f);
+        }
+
+        // Apply to renderer if present
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && bodySprite != null)
+        {
+            spriteRenderer.sprite = bodySprite;
+            spriteRenderer.color = CalculateCompositionColor();
+        }
+    }
+
+    /// <summary>
+    /// Core randomization logic shared between editor-only and runtime entry points.
+    /// </summary>
+    private void RandomizeInternal(List<ElementData> allElements)
+    {
+        if (allElements == null || allElements.Count == 0)
+        {
+            Debug.LogWarning("RandomizeInternal: No element data provided.");
+            return;
+        }
+
+        // Decide how many distinct elements to use (at least 1)
+        int elementCount = Random.Range(2, Mathf.Min(4, allElements.Count + 1));
         // Shuffle list
         allElements = allElements.OrderBy(_ => Random.value).ToList();
 
@@ -362,7 +420,6 @@ public class CelestBody : MonoBehaviour
             spriteRenderer.color = CalculateCompositionColor();
         }
 
-        Debug.Log($"Randomized CelestBody -> Temp: {temperature:F1}K, Elements: {composition.Count}, Closest: {closestTemplate?.bodyName ?? "None"}");
+        Debug.Log($"Randomized CelestBody (runtime) -> Temp: {temperature:F1}K, Elements: {composition.Count}, Closest: {closestTemplate?.bodyName ?? "None"}");
     }
-#endif
 }

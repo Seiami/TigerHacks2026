@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: Ne
   molarMass: 20
   color: {r: 0.9254902, g: 0.33023208, b: 0.20392153, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 8759416233454357477, guid: bb8f4cf6b4f406b45ac9ed6ae1161847, type: 3}

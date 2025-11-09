@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: He
   molarMass: 2
   color: {r: 0.7122642, g: 0.7122642, b: 0.7122642, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -3922636182114045322, guid: 76bed586909a1de43a86e4b5f1de9b31, type: 3}

@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: Fe
   molarMass: 56
   color: {r: 0.45882353, g: 0.22381026, b: 0.17254904, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -3234272069646236353, guid: 5b891c7304c408d4689c0a128c81c746, type: 3}

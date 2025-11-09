@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: Mg
   molarMass: 24
   color: {r: 0.8757565, g: 0.9056604, b: 0.8989341, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -2119641881135380360, guid: 29eb2d7db7e43cc4cad353f7f666f698, type: 3}

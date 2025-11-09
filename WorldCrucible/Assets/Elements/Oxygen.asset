@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: O
   molarMass: 16
   color: {r: 0.36547706, g: 0.9009434, b: 0.7075805, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 3941181492408310862, guid: 2105ef20faae7f64999a54454b776afa, type: 3}

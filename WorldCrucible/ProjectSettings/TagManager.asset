@@ -43,11 +43,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Dialogue
-    uniqueID: 2047627047
-    locked: 0
-  - name: Box
-    uniqueID: 2019620165
+  - name: Top
+    uniqueID: 2588299139
     locked: 0
   m_RenderingLayers:
   - Default

@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: CH4
   molarMass: 16
   color: {r: 0.41972235, g: 0.6792453, b: 0.53296876, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 6590839236366603629, guid: 4c424cc7cf812f14a91b6a90cebf9a87, type: 3}

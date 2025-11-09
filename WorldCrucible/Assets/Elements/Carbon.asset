@@ -16,4 +16,4 @@ MonoBehaviour:
   atomicSymbol: C
   molarMass: 12
   color: {r: 0.754717, g: 0.26343894, b: 0.26343894, a: 0}
-  icon: {fileID: 0}
+  icon: {fileID: -1976273339725279383, guid: c48dfbf3c47a3384099916b89324fa74, type: 3}

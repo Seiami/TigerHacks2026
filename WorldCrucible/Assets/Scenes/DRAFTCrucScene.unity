@@ -1152,6 +1152,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754676111}
   m_CullTransparentMesh: 1
+--- !u!1001 &875187401820893978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128674800717714555, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709057127684229244, guid: fbd1206baa960164b821beeed81f9184, type: 3}
+      propertyPath: m_Name
+      value: AudioPlayer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbd1206baa960164b821beeed81f9184, type: 3}
 --- !u!1001 &8099763349035867971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,15 +1219,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: mass
-      value: 0.29551026
+      value: 0.34127572
       objectReference: {fileID: 0}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: radius
-      value: 0.6660766
+      value: 0.69882506
       objectReference: {fileID: 0}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: bodyName
-      value: Red Dwarf Star-like Body
+      value: Red Giant Star-like Body
       objectReference: {fileID: 0}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: bodySprite
@@ -1178,7 +1235,7 @@ PrefabInstance:
       objectReference: {fileID: 8740491524576469797, guid: f0c1417120677f5499eeb218c0c353bd, type: 3}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: temperature
-      value: 3607.7507
+      value: 4631.808
       objectReference: {fileID: 0}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: composition.Array.size
@@ -1186,11 +1243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: composition.Array.data[0].ratio
-      value: 0.72502697
+      value: 0.68471754
       objectReference: {fileID: 0}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: composition.Array.data[1].ratio
-      value: 0.27497298
+      value: 0.31528246
       objectReference: {fileID: 0}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: composition.Array.data[2].ratio
@@ -1199,11 +1256,11 @@ PrefabInstance:
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: composition.Array.data[0].element
       value: 
-      objectReference: {fileID: 11400000, guid: fd6f9c6cfc4ee7540a9f173cf61477a1, type: 2}
+      objectReference: {fileID: 11400000, guid: 4c7afabbd9dcd9847ac7aa842921d0ab, type: 2}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: composition.Array.data[1].element
       value: 
-      objectReference: {fileID: 11400000, guid: 0ac0679423a88bc4d8e7f3849119c6b4, type: 2}
+      objectReference: {fileID: 11400000, guid: f713ab9ea10c74c41884751b973a33db, type: 2}
     - target: {fileID: 319692065786383088, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: composition.Array.data[2].element
       value: 
@@ -1214,15 +1271,15 @@ PrefabInstance:
       objectReference: {fileID: 8740491524576469797, guid: f0c1417120677f5499eeb218c0c353bd, type: 3}
     - target: {fileID: 694514534452182319, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: m_Color.b
-      value: 0.21101214
+      value: 0.8400804
       objectReference: {fileID: 0}
     - target: {fileID: 694514534452182319, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: m_Color.g
-      value: 0.36151585
+      value: 0.8446859
       objectReference: {fileID: 0}
     - target: {fileID: 694514534452182319, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: m_Color.r
-      value: 0.90187895
+      value: 0.8242103
       objectReference: {fileID: 0}
     - target: {fileID: 1815701009333956848, guid: d303fa0eb8a429342a6be65a0be84827, type: 3}
       propertyPath: m_Name
@@ -1280,3 +1337,4 @@ SceneRoots:
   - {fileID: 690271069}
   - {fileID: 520898670}
   - {fileID: 1579969728}
+  - {fileID: 875187401820893978}

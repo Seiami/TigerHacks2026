@@ -21,10 +21,10 @@ public class CelestBody : MonoBehaviour
 
     // Weights for comparison algorithm
     [Header("Comparison Weights")]
-    [SerializeField] private float compositionWeight = 0.5f;
-    [SerializeField] private float temperatureWeight = 0.44f;
-    [SerializeField] private float massWeight = 0.05f;
-    [SerializeField] private float radiusWeight = 0.01f;
+    [SerializeField] private float compositionWeight = 0.3f;
+    [SerializeField] private float temperatureWeight = 0.1f;
+    [SerializeField] private float massWeight = 0.5f;
+    [SerializeField] private float radiusWeight = 0.05f;
 
     [System.Serializable]
     public struct ElementRatio
@@ -159,6 +159,10 @@ public class CelestBody : MonoBehaviour
 
         foreach (var template in templates)
         {
+            // Skip templates where generated mass is more than 1000x the template's mass
+            if (template.mass > 0 && mass > 1000f * template.mass)
+                continue;
+
             float score = CalculateDifferenceScore(template);
 
             if (score < lowestScore)
@@ -314,6 +318,20 @@ public class CelestBody : MonoBehaviour
         }
 
         RandomizeInternal(allElements);
+
+
+    // Override radius and mass with specified random ranges, making high mass rare
+    float massT = Random.value; // 0..1
+    mass = Mathf.Lerp(0.0001f, 166515f, Mathf.Pow(massT, 5f)); // 5th power for extreme rarity
+    radius = Random.Range(0.0001f, 54500f);
+
+        // Re-apply to renderer if present
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && bodySprite != null)
+        {
+            spriteRenderer.sprite = bodySprite;
+            spriteRenderer.color = CalculateCompositionColor();
+        }
     }
 #endif
 
@@ -348,14 +366,11 @@ public class CelestBody : MonoBehaviour
         // Delegate to shared randomizer for composition & visual
         RandomizeInternal(allElements);
 
-        // Optionally tweak mass and recompute radius as a small random multiplier
-        if (randomizeMassScale)
-        {
-            float scale = Random.Range(0.5f, 2f);
-            mass *= scale;
-            // Update radius assuming cube-root scaling
-            radius = Mathf.Pow(Mathf.Max(1e-6f, mass), 1f / 3f);
-        }
+
+    // Override radius and mass with specified random ranges, making high mass rare
+    float massT = Random.value; // 0..1
+    mass = Mathf.Lerp(0.001f, 166515f, Mathf.Pow(massT, 5f)); // 5th power for extreme rarity
+    radius = Random.Range(0.0001f, 54500f);
 
         // Apply to renderer if present
         var spriteRenderer = GetComponent<SpriteRenderer>();

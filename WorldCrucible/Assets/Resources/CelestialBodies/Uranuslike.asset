@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fde3ae27ac3fc459c2d14390532319, type: 3}
   m_Name: Uranuslike
   m_EditorClassIdentifier: 
-  bodyName: Uranus-Like
-  bodySprite: {fileID: -1940275408494461777, guid: 1eca40a7cf13b59e49aba86fd0981de7, type: 3}
+  bodyName: Uranus
+  bodySprite: {fileID: 1059597720202493790, guid: 6b1c0b7f3fb7e5c4d999925dc6b476e3, type: 3}
   composition:
   - element: {fileID: 11400000, guid: a41ef9a0c7a3bdb41a04f79894a29116, type: 2}
     ratio: 0.2

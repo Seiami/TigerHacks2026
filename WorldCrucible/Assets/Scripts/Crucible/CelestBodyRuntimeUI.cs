@@ -120,7 +120,7 @@ public class CelestBodyRuntimeUI : MonoBehaviour
             RefreshFirstBodyDescription();
         });
 
-    // Create a top-centered description panel (center top of screen)
+    // Create a top-center description panel (sized and positioned to avoid button overlap)
     GameObject topPanel = new GameObject("TopDescriptionPanel");
     topPanel.transform.SetParent(runtimeCanvas.transform, false);
     var topImg = topPanel.AddComponent<Image>();
@@ -130,7 +130,7 @@ public class CelestBodyRuntimeUI : MonoBehaviour
     tprt.anchorMax = new Vector2(0.5f, 1f);
     tprt.pivot = new Vector2(0.5f, 1f);
     tprt.anchoredPosition = new Vector2(0f, -10f);
-    tprt.sizeDelta = new Vector2(640f, 140f);
+    tprt.sizeDelta = new Vector2(480f, 120f);
 
     // Two-column description text inside top panel; both auto-resize to fit their half
     // Left column
@@ -138,13 +138,13 @@ public class CelestBodyRuntimeUI : MonoBehaviour
     leftGo.transform.SetParent(topPanel.transform, false);
     descriptionTextLeft = leftGo.AddComponent<Text>();
     descriptionTextLeft.font = uiFont != null ? uiFont : Resources.GetBuiltinResource<Font>("Arial.ttf");
-    descriptionTextLeft.fontSize = 16;
+    descriptionTextLeft.fontSize = 15;
     descriptionTextLeft.alignment = TextAnchor.UpperLeft;
     descriptionTextLeft.horizontalOverflow = HorizontalWrapMode.Wrap;
     descriptionTextLeft.verticalOverflow = VerticalWrapMode.Overflow;
     descriptionTextLeft.resizeTextForBestFit = true;
     descriptionTextLeft.resizeTextMinSize = 10;
-    descriptionTextLeft.resizeTextMaxSize = 20;
+    descriptionTextLeft.resizeTextMaxSize = 15;
     RectTransform lrt = descriptionTextLeft.GetComponent<RectTransform>();
     lrt.anchorMin = new Vector2(0f, 0f);
     lrt.anchorMax = new Vector2(0.5f, 1f);

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fde3ae27ac3fc459c2d14390532319, type: 3}
   m_Name: Jupiterlike
   m_EditorClassIdentifier: 
-  bodyName: Jupiter-like
+  bodyName: Jupiter
   bodySprite: {fileID: -1940275408494461777, guid: 1eca40a7cf13b59e49aba86fd0981de7, type: 3}
   composition:
   - element: {fileID: 11400000, guid: 0ac0679423a88bc4d8e7f3849119c6b4, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fde3ae27ac3fc459c2d14390532319, type: 3}
   m_Name: Mercurylike
   m_EditorClassIdentifier: 
-  bodyName: Mercury-Like
+  bodyName: Mercury
   bodySprite: {fileID: 1840435030066992420, guid: 4371ff813064cf17b908acb463e42aa9, type: 3}
   composition:
   - element: {fileID: 11400000, guid: cf0914f7743905b43ae8b15679dd2914, type: 2}

@@ -22,6 +22,9 @@ IPointerClickHandler
     public GameObject elementCursorPrefab;
     public GameObject elementCursor;
 
+    public GameObject sourceObj;
+
+
     private static ElementIcon currentlySelected;
 
     private GameObject floatingImageObject;
@@ -74,7 +77,6 @@ IPointerClickHandler
     {
         canvasGroup.blocksRaycasts = false;
 
-        // ✅ Create a new floating image (UI only)
         floatingImageObject = new GameObject("FloatingImage");
         floatingImageObject.transform.SetParent(canvas.transform, false);
 
@@ -108,11 +110,17 @@ IPointerClickHandler
             // Vector2 mouseScreenPosition = Input.mousePosition;
             // sprite.transform.position = mouseScreenPosition;
         } 
-        // else{
-        //     elementCursor.transform.position = originalPosition.position;
-        // }
+    }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        // Get selected sourceObject
     }
 
+    public void OnDrag(PointerEventData eventData)
+    {
+        // Spawn source object
+        Instantiate(sourceObj, sourceObj.transform);
+    }
 
 }
 

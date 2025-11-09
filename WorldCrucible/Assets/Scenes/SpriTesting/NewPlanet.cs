@@ -1,34 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
-public class NewPlanet : MonoBehaviour
-{
-    
-    private int rand;
-    
-    
+public class NewPlanet : MonoBehaviour {
     public List<Sprite> planetSprites;
-    
+    //randomized int that determines sprite
+    private int rand;
+    //changing values reflecting planet data
+    private bool isInPool;
+    private int mass;
+    private List<string> compElements;
+    private List<float> compPercents;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         rand = Random.Range(0,planetSprites.Count);
         GetComponent<SpriteRenderer>().sprite = planetSprites[rand];
     }
     
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         if(Input.GetMouseButtonDown(0)) {
-            Recolor((byte)Random.Range(0,255), (byte)Random.Range(0,255), (byte)Random.Range(0,255));
+            Recolor();
         }
     }
     
-    void Recolor(byte Rval, byte Bval, byte Aval)
-    {
-        GetComponent<SpriteRenderer>().color = new Color32(Rval, Bval, Aval, 255);
+    void Resize() {
+        
+    }
+
+    void Recolor() {
+        //GetComponent<SpriteRenderer>().color = new Color32(R, G, B, A);
+        
     }
 }

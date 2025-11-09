@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 7284880fdb4e9b7a1a05b05353df32c1
+guid: 0ded1aab5685c53a9a4b5f58bba45dad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9018111846463007574
-    second: Decals_0
-  - first:
-      213: -5300756708933983464
-    second: Decals_1
-  - first:
-      213: -3312338835949399008
-    second: Decals_2
+      213: -541547590618000354
+    second: MenuBoxBottomLeft_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Decals_0
+      name: MenuBoxBottomLeft_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 4
-        width: 19
-        height: 17
+        x: 0
+        y: 0
+        width: 175
+        height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa494de3e0b39d280800000000000000
-      internalID: -9018111846463007574
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Decals_1
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 4
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 813a83b9bddef66b0800000000000000
-      internalID: -5300756708933983464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Decals_2
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 5
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0245183d0653802d0800000000000000
-      internalID: -3312338835949399008
+      spriteID: e14de38e5590c78f0800000000000000
+      internalID: -541547590618000354
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Decals_0: -9018111846463007574
-      Decals_1: -5300756708933983464
-      Decals_2: -3312338835949399008
+      MenuBoxBottomLeft_0: -541547590618000354
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

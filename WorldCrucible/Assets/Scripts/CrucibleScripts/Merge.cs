@@ -42,14 +42,15 @@ public class Merge : MonoBehaviour
         }
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.CompareTag("MergeBlock")) {
-            if(collision.gameObject.GetComponent<SpriteRenderer>().color == GetComponent<SpriteRenderer>().color ) {
+        if(collision.gameObject.name == "Crucible") {
+            // if(collision.gameObject.GetComponent<SpriteRenderer>().color == GetComponent<SpriteRenderer>().color ) {
+                Debug.Log("attempting to mege");
                 Block1 = transform;
                 Block2 = collision.transform;
                 CanMerge = true;
                 Destroy(collision.gameObject.GetComponent<Rigidbody2D>());
                 Destroy(GetComponent<Rigidbody2D>());
-            }
+            // }
         }
     }
 }

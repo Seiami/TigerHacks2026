@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PoolPartical : MonoBehaviour
 {
+    public NewPlanet crucible;
     public bool isInPool;
     public bool isOnScreen;
     //public List<Sprite> meteorSprites;
@@ -12,12 +13,15 @@ public class PoolPartical : MonoBehaviour
     private float heat;
     //variable for the point the object moves towards
     private Vector3 target;
+    private Vector3 velocity;
+    private PoolController parent;
 
     void Start()
     {
         transform.position = new Vector3(100,100,0);
         isInPool = true;
         isOnScreen = false;
+        target = crucible.transform.position;
         //selects random 
         //GetComponent<SpriteRenderer>().sprite = meteorSprites[Random.Range(0,meteorSprites.Count)];
     }
@@ -41,10 +45,11 @@ public class PoolPartical : MonoBehaviour
     }
 
     void Resize(){
-        //transform.localScale = new Vector3(, , 0);
+        //float massRatio = 
+        //Vector3 scale = new Vector3(,,0);
     }
 
     void Recolor(){
-        //GetComponent<SpriteRenderer>().color = ;
+        GetComponent<SpriteRenderer>().color = parent.selection.color;
     }
 }

@@ -1,83 +1,180 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
-
-// Tutorial: https://www.youtube.com/watch?v=7axImc1sxa0&t=268s
-
-[ExecuteInEditMode]
-[RequireComponent (typeof (Rigidbody2D))]
+// Note: Removed [ExecuteInEditMode] as it interferes with runtime coroutines and isn't needed for gameplay
+[RequireComponent(typeof(Rigidbody2D))]
 public class CelestialBody : GravityObject
 {
     public Vector2 initialVelocity;
     public bool useInitialVelocity = false;
-    //public string bodyName = "Unnamed";
-    Transform meshHolder;
-
-    public Vector2 velocity { get; private set; }
-    Rigidbody2D rb;
+    
+    // NEW: Drag-to-spawn state
+    [Header("Spawn Settings")]
+    public bool isBeingPlaced = true; // Start true for newly spawned bodies
+    
+    private Vector2 velocity;
+    private Rigidbody2D rb;
+    private bool hasBeenReleased = false;
+    private Collider2D col;
+    // renamed to avoid duplicate declarations from previous version
+    private Vector2 pendingVelocityInternal = Vector2.zero;
+    private bool applyVelocityFlag = false;
+    private bool enableColliderFlag = false;
+    private Vector2 pendingVelocity = Vector2.zero;
+    private bool applyVelocityNextFrame = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         velocity = initialVelocity;
+        
+        // Cache collider
+        col = GetComponent<Collider2D>();
+
+        // Ensure rigidbody is set up correctly for gravity simulation
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic; // Start as kinematic while placing
+            rb.gravityScale = 0f; // We handle gravity manually
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
+
+        // Disable collider while placing to avoid any accidental contacts
+        if (isBeingPlaced && col != null)
+        {
+            col.enabled = false;
+        }
     }
 
-    // Update all velocities of all  at once in scene
-    /* 
-    public void UpdateVelocity(CelestialBody[] allBodies, float timeStep)
-     {
-         foreach (var otherBody in allBodies)
-         {
-             if (otherBody != this)
-             {
-                 float sqrDst = (otherBody.GetComponent<Rigidbody2D>().position - GetComponent<Rigidbody2D>().position).sqrMagnitude; // Squared Distance
-                 Vector2 forceDir = (otherBody.GetComponent<Rigidbody2D>().position - GetComponent<Rigidbody2D>().position).normalized; // Normalized direction (angle)
-
-                 Vector2 acceleration = forceDir * Universe.gravitationalConstant * otherBody.mass / sqrDst; // G formula slotted into F = MA for Acceleration
-                 velocity += acceleration * timeStep;
-             }
-         }
-     }
-     */
-
-    // Update velocity itself
-    /*
-    public void UpdateVelocity(Vector2 acceleration, float timeStep)
+    void Update()
     {
-        velocity += acceleration * timeStep;
+        // Allow dragging while being placed
+        if (isBeingPlaced && !hasBeenReleased)
+        {
+            FollowMouse();
+        }
     }
     
-
-    // Updaye position itself
-    public void UpdatePosition(float timeStep)
+    void FixedUpdate()
     {
-        rb.MovePosition(rb.position + velocity * timeStep);
-    }
-    */
-
-    /* void OnValidate()
-    {
-        //mass = surfaceGravity * radius * radius / Universe.gravitationalConstant;
-        // TODO: Mesh holder should be a child under the body that renders/has the mesh representation. Implement later
-        // meshHolder.localScale = Vector2.one * radius;
-        // meshHolder = transform.GetChild(0); 
-        // GameObject.name = bodyName;
-    }
-    */
-
-    public Rigidbody2D Rigidbody2D
-    {
-        get
+        // Apply pending velocity after physics initialization
+        if (applyVelocityFlag && rb != null)
         {
-            return rb;
+            rb.linearVelocity = pendingVelocityInternal;
+            Debug.Log($"[CelestialBody] Applied velocity: {pendingVelocityInternal.magnitude:F2}");
+            applyVelocityFlag = false;
+        }
+
+        // Enable collider after velocity is applied to avoid initial separation impulses
+        if (enableColliderFlag && col != null)
+        {
+            col.enabled = true;
+            enableColliderFlag = false;
         }
     }
 
-    public UnityEngine.Vector2 Position
+    void FollowMouse()
     {
-        get
+        if (Camera.main == null) return;
+        
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        
+        // Move using Rigidbody position to avoid physics velocity calculation
+        if (rb != null)
         {
-            return rb.position;
+            // Use MovePosition while kinematic to avoid unintended velocity injection
+            rb.MovePosition(mousePos);
+            // Do NOT touch linearVelocity during placement; keep it at zero from Awake configuration
+            rb.angularVelocity = 0f;
+        }
+        else
+        {
+            transform.position = mousePos;
+        }
+        
+        // On mouse button down, start velocity visualization
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (CelestialPathHandler.Instance != null)
+            {
+                CelestialPathHandler.Instance.StartVisualizingPath(this);
+            }
+        }
+        
+        // On mouse button up, release the body
+        if (Input.GetMouseButtonUp(0))
+        {
+            ReleaseCelestialBody();
         }
     }
+
+    void ReleaseCelestialBody()
+    {
+        hasBeenReleased = true;
+        isBeingPlaced = false;
+        
+        // Get the desired velocity FIRST (before changing bodyType)
+        Vector2 desiredVelocity = Vector2.zero;
+        
+        if (CelestialPathHandler.Instance != null)
+        {
+            CelestialPathHandler.Instance.StopVisualizingPath();
+            // The path handler has set initialVelocity via SetInitialVelocity
+            desiredVelocity = initialVelocity;
+        }
+        else if (useInitialVelocity)
+        {
+            // Fallback: use preset initialVelocity
+            desiredVelocity = initialVelocity;
+        }
+
+        // Optional: If Shift is held, snap to circular orbit around nearest central body
+    // Use newer API to avoid obsolete warning
+    var solarSystem = Object.FindFirstObjectByType<SolarSystem>();
+        if (solarSystem != null && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+        {
+            var central = solarSystem.FindNearestCentralBody(rb);
+            if (central != null)
+            {
+                var circV = solarSystem.ComputeCircularOrbitVelocity(rb, central, 1f);
+                if (circV != Vector2.zero)
+                {
+                    desiredVelocity = circV;
+                    Debug.Log($"[CelestialBody] Shift-held: snapping to circular orbit around '{central.gameObject.name}' at speed {circV.magnitude:F2}");
+                }
+            }
+        }
+        
+    Debug.Log($"[CelestialBody] Release: Switching to Dynamic, will apply velocity {desiredVelocity.magnitude:F2} next frame");
+        
+        // Now switch to Dynamic and schedule velocity application
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic; // Enable physics
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            
+            // Schedule velocity to be applied in next FixedUpdate
+            pendingVelocityInternal = desiredVelocity;
+            applyVelocityFlag = true;
+
+            // Enable collider next FixedUpdate after velocity application
+            enableColliderFlag = true;
+        }
+    }
+    
+    public void SetInitialVelocity(Vector2 vel)
+    {
+        initialVelocity = vel;
+        // Defer actual velocity application until release sequence sets body Dynamic
+        // (CelestialBody.ReleaseCelestialBody schedules pendingVelocityInternal)
+    }
+
+    public Rigidbody2D Rigidbody2D => rb;
+    public Vector2 Position => rb.position;
+    public Vector2 Velocity => rb.linearVelocity;
 }

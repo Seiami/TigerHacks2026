@@ -14,8 +14,8 @@ public class OrbitDebugDisplay : MonoBehaviour
     public CelestialBody centralBody;
 
     [Header("Drawing Settings")]
-    public float lineWidth = 0.02f;
-    public bool useThickLines = false;
+    public float lineWidth = 0.05f;
+    public bool useThickLines = true;
     public bool liveMode = true;
 
     private Dictionary<CelestialBody, List<Vector3>> liveTrails = new();

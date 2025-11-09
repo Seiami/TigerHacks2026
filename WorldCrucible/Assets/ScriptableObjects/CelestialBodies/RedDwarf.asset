@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedDwarf
   m_EditorClassIdentifier: 
   bodyName: Red Dwarf Star
-  bodySprite: {fileID: 0}
+  bodySprite: {fileID: 8740491524576469797, guid: f0c1417120677f5499eeb218c0c353bd, type: 3}
   composition:
   - element: {fileID: 11400000, guid: 0ac0679423a88bc4d8e7f3849119c6b4, type: 2}
     ratio: 0.75

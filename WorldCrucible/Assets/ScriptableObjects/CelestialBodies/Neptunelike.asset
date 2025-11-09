@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fde3ae27ac3fc459c2d14390532319, type: 3}
-  m_Name: IceGiant
+  m_Name: Neptunelike
   m_EditorClassIdentifier: 
-  bodyName: Ice Giant
+  bodyName: Neptune-Like
   bodySprite: {fileID: -1940275408494461777, guid: 1eca40a7cf13b59e49aba86fd0981de7, type: 3}
   composition:
   - element: {fileID: 11400000, guid: 0ac0679423a88bc4d8e7f3849119c6b4, type: 2}
     ratio: 0.1
   - element: {fileID: 11400000, guid: f713ab9ea10c74c41884751b973a33db, type: 2}
-    ratio: 0.1
+    ratio: 0.05
   - element: {fileID: 11400000, guid: a41ef9a0c7a3bdb41a04f79894a29116, type: 2}
     ratio: 0.4
   - element: {fileID: 11400000, guid: c486175a5cdf5f5448bed473f7a217a3, type: 2}
     ratio: 0.2
   - element: {fileID: 11400000, guid: 1740227c1d9e8b5458f9a3bd0f393e7c, type: 2}
-    ratio: 0.2
-  temperature: 80
+    ratio: 0.25
+  temperature: 59
   radius: 4
-  mass: 15.5
+  mass: 17.15

@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fde3ae27ac3fc459c2d14390532319, type: 3}
-  m_Name: Yellow Dwarf
+  m_Name: WhiteDwarf
   m_EditorClassIdentifier: 
-  bodyName: Yellow Dwarf Star
+  bodyName: White Dwarf Star
   bodySprite: {fileID: 8740491524576469797, guid: f0c1417120677f5499eeb218c0c353bd, type: 3}
   composition:
-  - element: {fileID: 11400000, guid: 0ac0679423a88bc4d8e7f3849119c6b4, type: 2}
-    ratio: 0.75
   - element: {fileID: 11400000, guid: f713ab9ea10c74c41884751b973a33db, type: 2}
-    ratio: 0.25
-  temperature: 5930
-  radius: 109
-  mass: 333030
+    ratio: 0.33
+  - element: {fileID: 11400000, guid: 0dafb634dbb31954f98ed3b93ba5834b, type: 2}
+    ratio: 0.15
+  - element: {fileID: 11400000, guid: fd6f9c6cfc4ee7540a9f173cf61477a1, type: 2}
+    ratio: 0.02
+  - element: {fileID: 11400000, guid: 29dbbbb5f48f91d4f913e5ef3d9ffe8a, type: 2}
+    ratio: 0.5
+  temperature: 789
+  radius: 1
+  mass: 449590

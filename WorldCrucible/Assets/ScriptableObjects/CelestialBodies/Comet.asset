@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Comet
   m_EditorClassIdentifier: 
   bodyName: Comet
-  bodySprite: {fileID: 0}
+  bodySprite: {fileID: 1840435030066992420, guid: 4371ff813064cf17b908acb463e42aa9, type: 3}
   composition:
   - element: {fileID: 11400000, guid: a41ef9a0c7a3bdb41a04f79894a29116, type: 2}
     ratio: 0.5
